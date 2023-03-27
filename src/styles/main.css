@@ -1,0 +1,8 @@
+body {
+  background-color: rgb(230, 111, 226);
+}
+.logo {
+  width: 350px;
+  height: 200px;
+  margin: 10px auto;
+}

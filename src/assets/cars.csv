@@ -1,0 +1,5 @@
+"id","model","manufacturer","year","volume","price","color","description"
+"1","M8","BMW","2019","650.00","136000.00","blue","sedan"
+"2","Venue","Hyundai","2019","121.00","21500.00","gray","none"
+"3","Corolla","Toyota","2021","169.00","24433.00","gray","none"
+"4","I8","BMW","2016","369.00","98000.00","black","cupe"
