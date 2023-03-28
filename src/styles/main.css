@@ -1,5 +1,8 @@
+@import url(roboto.css);
+@import "~normalize-css";
 body {
-  background-color: rgb(230, 111, 226);
+  background-color: rgb(139, 203, 217);
+  font-family: "Roboto", sans-serif;
 }
 .logo {
   width: 350px;
