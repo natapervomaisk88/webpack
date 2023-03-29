@@ -13,6 +13,7 @@ module.exports = {
   entry: {
     main: path.resolve(__dirname, "src", "index.js"),
     statistics: path.resolve(__dirname, "src", "statistics.js"),
+    request: path.resolve(__dirname, "src", "request.js"),
   },
 
   output: {
@@ -79,6 +80,19 @@ module.exports = {
       {
         test: /\.ttf$/,
         type: "asset/resource", //шрифты
+      },
+      {
+        test: /\.m?js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            // presets: [["@babel/preset-env", { targets: "defaults" }]],
+            presets: [
+              ["@babel/preset-env", { targets: { chrome: 111, edge: 111 } }],
+            ],
+          },
+        },
       },
     ],
   },
