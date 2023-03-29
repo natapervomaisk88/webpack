@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const MiniCssExractPlugin = require("mini-css-extract-plugin");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
 const isModeDev = process.env.NODE_ENV === "development";
 const filename = (ext) =>
@@ -13,22 +14,29 @@ module.exports = {
     main: path.resolve(__dirname, "src", "index.js"),
     statistics: path.resolve(__dirname, "src", "statistics.js"),
   },
+
   output: {
     filename: filename("js"),
     path: path.resolve(__dirname, "dist"),
   },
+
   devServer: {
     port: 4200,
   },
+
   devtool: isModeDev ? "source-map" : false,
+
   optimization: {
     splitChunks: {
       chunks: "all",
     },
+    minimizer: [new CssMinimizerPlugin()],
   },
+
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "src", "index.html"),
+      minify: { collapseWhitespace: !isModeDev },
     }),
     new CleanWebpackPlugin(),
     new CopyWebpackPlugin({
@@ -43,6 +51,7 @@ module.exports = {
       filename: filename("css"),
     }),
   ],
+
   module: {
     rules: [
       {
